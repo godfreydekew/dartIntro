@@ -1,0 +1,109 @@
+// Copyright 2015 the Dart project authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license
+// that can be found in the LICENSE file.
+
+void main(){
+  
+  Map mark = {
+    "godie": 233,
+    "Aisha": 42,
+    "Abdul": 47
+  };
+  print(mark["godie"]!.isEven);
+  // a list of maps
+  List<Map> marks = [{
+     "godie": 233,
+    "Aisha": 42,
+    "Abdul": 47
+  },
+  {
+   "go": 2,
+   "Aish": 4,
+   "Abdu": 4
+  }                                                          
+  ];
+  
+  marks.map((e) {
+    e.forEach((key, val) {
+      print('$key: $val');
+    });
+  }).toList();
+  Set list = {10, 20, 20};
+  
+  final list1 = list.where((i) => i > 10).toList();
+  for(final i in list1){
+    print(i);
+  }
+}
+
+
+// void main(){
+//   Animal animal = Cat();
+  
+//   switch(animal){
+//     case Dog():
+//       print('dog');
+//     case Cat():
+//       print('cat');
+//     case Human():
+//       print('ghodie');
+//   }
+  
+// }
+
+// // all of them should be in the s same library
+
+// sealed class Animal {}
+// final class Anima1 {}
+// base class Animal2 {}
+// interface class Animal3 {}
+// mixin class Animal4{}
+// sealed class Animal{}
+// class Human implements Animal {}
+
+// class Dog implements Animal {}
+
+// class Cat extends Animal {}
+
+
+// void main(){
+//   //oop
+//   final anim = Animal();
+//   anim.fn();
+// }
+
+
+// mixin Scream {
+//   bool isScreaming = false;
+// }
+
+// mixin Jump {
+//   int jumping = 10;
+// }
+
+// class Animal with Jump, Scream {
+//   void fn() {
+//     print(jumping);
+//     print(isScreaming);
+//   }
+// }
+// void main() {
+//  final car = Car();
+//   car.accelerate();
+// }
+
+// abstract class Vehicle {
+//   void accelerate();
+// }
+
+// class Car implements Vehicle {
+//   @override
+//   void accelerate(){
+//     print('accelerating');
+//   }
+// }
+// class Truck implements Vehicle {
+  
+// }
+
+
