@@ -2,11 +2,21 @@
 // Use of this source code is governed by a BSD-style license
 // that can be found in the LICENSE file.
 //async
+// import http package
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-void main(){
-  var url = Uri.https('https://jsonplaceholder.typicode.com', 'users');
-  http.get(url);
+void main() async {
+  var url = Uri.parse('https://jsonplaceholder.typicode.com/users/1');
+  // make http get request
+  var response = await http.get(url);
+  // check the status code for the result  
+  if (response.statusCode == 200) {
+    print(jsonDecode(response.body)['name']);
+  } else {
+    print('Request failed with status: ${response.statusCode}.');
+  }  
+
 }
 // void main() {
 // //   String result = await giveAResultAfter2sec();
