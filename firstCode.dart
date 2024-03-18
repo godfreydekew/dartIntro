@@ -1,23 +1,64 @@
+
+
 // Copyright 2015 the Dart project authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license
 // that can be found in the LICENSE file.
 //async
 // import http package
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+
+//!Streams>https://blog.stackademic.com/understanding-streams-in-dart-and-flutter-0d153b559760
+// Callbacks: The listen method takes three optional callback arguments:
+
+// onData: This function is called whenever the stream emits a new value (data element). You typically use this to process the received data.
+// onError: This function is called if the stream encounters an error during its operation. You can use it to handle any errors that might occur.
+// onDone: This function is called when the stream finishes emitting all its data and is considered "done." You can use it to perform any cleanup tasks or
+
+import 'dart:async';
 
 void main() async {
-  var url = Uri.parse('https://jsonplaceholder.typicode.com/users/1');
-  // make http get request
-  var response = await http.get(url);
-  // check the status code for the result  
-  if (response.statusCode == 200) {
-    print(jsonDecode(response.body)['name']);
-  } else {
-    print('Request failed with status: ${response.statusCode}.');
-  }  
 
+ countDown().listen((val) {
+   print(val);
+ }, onDone: (){
+   print("Hey we are ready");
+ });
 }
+
+Stream<int> countDown() {
+  final controller = StreamController<int>();
+
+  controller.sink.add(1);
+
+  controller.stream.listen((val) {
+    print(val);
+  });
+  return Stream.periodic(Duration(seconds: 1), (val) {
+    return val;
+  });
+  
+  // for(int i = 0; i < 5; i++) {
+  //    yield i;
+  //   await Future.delayed(Duration(seconds: 1));
+  //   //pauses the code until it gets the result
+  // }
+}
+
+
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
+
+// void main() async {
+//   var url = Uri.parse('https://jsonplaceholder.typicode.com/users/1');
+//   // make http get request
+//   var response = await http.get(url);
+//   // check the status code for the result  
+//   if (response.statusCode == 200) {
+//     print(jsonDecode(response.body));
+//   } else {
+//     print('Request failed with status: ${response.statusCode}.');
+//   }  
+
+// }
 // void main() {
 // //   String result = await giveAResultAfter2sec();
 // //   print(result);
@@ -33,18 +74,18 @@ void main() async {
 // }
 
 // void main(){
-  
+
 //   try {
 //     print(10/0);
-    
+
 //   }catch (e){
 //     print(e);
 //   }
-  
+
 // }
 // void main() {
 //   final employee1 = Employee('Godie', EmployeeType.swe);
-  
+
 //   employee1.fn();
 // }
 
@@ -52,10 +93,10 @@ void main() async {
 //   swe(200),
 //   finance(900),
 //   marketing(90);
-  
+
 //   final  int salary;
 //   const EmployeeType(this.salary);
-  
+
 // }
 // class Employee {
 //   final String name;
